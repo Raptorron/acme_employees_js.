@@ -50,30 +50,30 @@ spacer('')
 spacer('findCoworkersFor Larry')
 
 //given an employee and a list of employees, return the employees who report to the same manager
-// function findCoworkersFor(cb, outerArr){
-//   cb = function findEmployeeByName(names, innerArr){
-//     innerArr = outerArr;
-//     let result = [];
-//     let arr = [];
-//     let namedArr = [];
-//     for (let i=0; i<innerArr.length; i++){
-//       if(innerArr[i].name === names){
-//         namedArr.push(innerArr[i]);
-//       }else if (innerArr[i].name !== names){
-//         arr.push(innerArr[i]);
-//       }
-//     }
-//     for(let j=0; j<arr.length; j++){
-//       if(arr[j].managerId === namedArr[0].managerId){
-//         result.push(arr[j]);
-//       }
-//     }
-//     return result;
-//     };
-//   return cb();
-// }
+function findCoworkersFor(cb, outerArr){
+  cb = function findEmployeeByName(names, innerArr){
+    innerArr = outerArr;
+    let result = [];
+    let arr = [];
+    let namedArr = [];
+    for (let i=0; i<innerArr.length; i++){
+      if(innerArr[i].name === names){
+        namedArr.push(innerArr[i]);
+      }else if (innerArr[i].name !== names){
+        arr.push(innerArr[i]);
+      }
+    }
+    for(let j=0; j<arr.length; j++){
+      if(arr[j].managerId === namedArr[0].managerId){
+        result.push(arr[j]);
+      }
+    }
+    return result;
+    };
+  return cb();
+}
 
-// console.log(findCoworkersFor(findEmployeeByName('larry', employees), employees));
+console.log(findCoworkersFor(findEmployeeByName('larry', employees), employees));
 /*
 [ { id: 3, name: 'curly', managerId: 1 },
   { id: 99, name: 'lucy', managerId: 1 } ]
@@ -83,33 +83,33 @@ spacer('');
 
 spacer('findManagementChain for moe')
 //given an employee and a list of employees, return a the management chain for that employee. The management chain starts from the employee with no manager with the passed in employees manager
-// function findManagementChainForEmployee(cb, outerArr){
-//   cb = function findEmployeeByName(names, innerArr){
-//     innerArr = outerArr;
-//     let result = [];
-//     let arr = [];
-//     let namedArr = [];
-//     for (let i=0; i<innerArr.length; i++){
-//       if(innerArr[i].name === names){
-//         namedArr.push(innerArr[i]);
-//       }else if (innerArr[i].name !== names){
-//         arr.push(innerArr[i]);
-//       }
-//     }
-//     for(let j=0; j<arr.length; j++){
-//       if(arr[j].managerId < namedArr[0].managerId){
-//         result.push(arr[j]);
-//       }
-//     }
-//     return result;
-//     };
-//   return cb();
-// }
+function findManagementChainForEmployee(cb, outerArr){
+  cb = function findEmployeeByName(names, innerArr){
+    innerArr = outerArr;
+    let result = [];
+    let arr = [];
+    let namedArr = [];
+    for (let i=0; i<innerArr.length; i++){
+      if(innerArr[i].name === names){
+        namedArr.push(innerArr[i]);
+      }else if (innerArr[i].name !== names){
+        arr.push(innerArr[i]);
+      }
+    }
+    for(let j=0; j<arr.length; j++){
+      if(arr[j].managerId < namedArr[0].managerId){
+        result.push(arr[j]);
+      }
+    }
+    return result;
+    };
+  return cb();
+}
 
-// console.log(findManagementChainForEmployee(findEmployeeByName('moe', employees), employees));//[  ]
-// spacer('');
-// spacer('findManagementChain for shep Jr.')
-// console.log(findManagementChainForEmployee(findEmployeeByName('shep Jr.', employees), employees));
+console.log(findManagementChainForEmployee(findEmployeeByName('moe', employees), employees));//[  ]
+spacer('');
+spacer('findManagementChain for shep Jr.')
+console.log(findManagementChainForEmployee(findEmployeeByName('shep Jr.', employees), employees));
 /*
 [ { id: 1, name: 'moe' },
   { id: 2, name: 'larry', managerId: 1 },
